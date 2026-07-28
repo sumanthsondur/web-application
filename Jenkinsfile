@@ -9,7 +9,10 @@ pipeline {
     stages {
         stage('Git-checkout') {
             steps {
-                git branch: 'dev', url: 'https://github.com'
+                // Clears out the old, broken git cache configuration
+                cleanWs()
+                // Points to your exact branch and repository URL
+                git branch: 'dev', url: 'https://github.com/sumanthsondur/web-application.git'
             }
         }
         
