@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('Git-checkout') {
             steps {
-                // Points to your personal fork repo
                 git branch: 'dev', url: 'https://github.com'
             }
         }
@@ -34,7 +33,6 @@ pipeline {
         
         stage('Containerisation') {
             steps {
-                // Gracefully stops/removes old containers to avoid naming crashes
                 sh '''
                     docker rm -f c8 || true
                     docker run -d --name c8 -p 9008:8080 sumanthsondur/project-1
